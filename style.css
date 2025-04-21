@@ -736,6 +736,20 @@ body {
   line-height: 1.2;
 }
 
+/* Mobile tier switcher hidden by default */
+.vip-tier-switcher-mobile {
+  display: none;
+  gap: 2.5rem;
+  align-items: center;
+  margin-left: auto;
+}
+
+.vip-tier-switcher-mobile img {
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+}
+
 @media (max-width: 1760px) {
   .vip-tabs h1 {
     font-size: 1.5rem;
@@ -827,6 +841,9 @@ body {
   .vip-tabs-wrapper {
     display: none;
   }
+  .vip-tier-switcher-mobile {
+    display: flex;
+  }
   .tier-flex {
     flex-direction: column;
   }
@@ -846,4 +863,411 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .vip-tiers-section {
+    padding: 4rem 2rem;
+  }
+  .tier-text {
+    padding: 1rem;
+  }
+  .tier-image img {
+    padding: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .vip-section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .vip-title {
+    font-size: 3rem;
+  }
+  .tier-text p {
+    font-size: 1.8rem;
+  }
+  .vip-tier-switcher-mobile img {
+    width: 45px;
+  }
+}
+
+@media (max-width: 430px) {
+  .vip-section-title {
+    font-size: 1.5rem;
+  }
+  .vip-icon {
+    width: 50px;
+  }
+  .vip-title {
+    font-size: 2.5rem;
+  }
+  .tier-text p {
+    font-size: 1.5rem;
+  }
+  .vip-tier-switcher-mobile img {
+    width: 30px;
+  }
+}
+
+@media (max-width: 390px) {
+  .vip-tiers-section {
+    padding: 4rem 1rem;
+  }
+  .vip-icon {
+    width: 35px;
+  }
+}
+
 /* End of VipTiers Section */
+
+/* Start of Vip Benefits Section */
+.vip-benefits-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  filter: drop-shadow(0px 0px 15px #c61bff);
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.vip-benefits-section {
+  text-align: center;
+  padding: 4rem 7rem;
+  background-color: #02020c;
+  width: 100%;
+}
+
+.vip-benefits-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 3rem;
+}
+
+.vip-benefits-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+  width: 100%;
+}
+
+.vip-benefit-arrow {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.vip-benefit-arrow img {
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: block;
+}
+
+.vip-benefits-content {
+  width: 100%;
+  max-width: 1500px;
+  background: url("https://i.imgur.com/kjKoLLC.png") no-repeat center center;
+  background-size: cover;
+  padding: 3rem;
+  border-radius: 16px;
+  color: white;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 500px;
+}
+
+.vip-benefit-slide {
+  flex: 0 0 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: opacity 0.3s ease-in-out;
+  width: 100%;
+}
+
+.vip-benefit-slide.active {
+  display: flex;
+}
+
+.vip-benefit-slide h3 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.vip-benefit-slide p {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  max-width: 90%;
+  line-height: 1.5;
+}
+
+.vip-benefit-button {
+  background: linear-gradient(90deg, #8f00ff 0%, #f73068 100%);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  width: 400px;
+  height: 80px;
+  font-size: 1.5rem;
+  font-weight: normal;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vip-benefit-button:hover {
+  font-weight: bold;
+  box-shadow: 0 0 15px #f73068;
+  transform: scale(1.05);
+}
+
+/* Mobile tier switcher hidden by default */
+.vip-benefits-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.vip-benefit-switcher-mobile {
+  display: none;
+  gap: 2.5rem;
+  align-items: center;
+  margin-left: auto;
+}
+
+.vip-benefit-switcher-mobile img {
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+}
+
+@media (max-width: 991px) {
+  .vip-benefit-button {
+    width: 300px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 890px) {
+  .vip-benefits-section {
+    text-align: center;
+    padding: 4rem 4rem;
+  }
+  .vip-benefits-content {
+    padding: 4rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .vip-benefit-arrow img {
+    display: none;
+  }
+  .vip-benefits-title {
+    text-align: left;
+    margin-bottom: 0;
+  }
+  .vip-benefit-switcher-mobile {
+    display: flex;
+  }
+}
+@media (max-width: 576px) {
+  .vip-benefits-content {
+    padding: 4rem 1rem;
+  }
+  .vip-benefits-section {
+    padding: 4rem 2rem;
+  }
+  .vip-benefit-slide h3 {
+    font-size: 2rem;
+  }
+  .vip-benefit-slide p {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .vip-benefit-button {
+    width: 200px;
+    height: 70px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .vip-benefit-switcher-mobile img {
+    width: 30px;
+  }
+  .vip-benefits-title {
+    font-size: 2rem;
+  }
+  .vip-benefit-slide h3 {
+    font-size: 1.5rem;
+  }
+  .vip-benefit-slide p {
+    font-size: 1.2rem;
+  }
+
+  .vip-benefit-button {
+    height: 50px;
+  }
+  .vip-benefits-section {
+    padding: 4rem 1rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .vip-benefits-content {
+    padding: 2rem 0.5rem 3rem 0.5rem;
+  }
+  .vip-benefits-title {
+    font-size: 1.8rem;
+  }
+  .vip-benefits-section {
+    padding: 4rem 1rem;
+  }
+}
+/* End of Vip Benefits Section */
+
+/* Start of Benefits table Section */
+.table-section {
+  background-color: #000;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.benefits-table-wrapper {
+  background-color: #270035;
+  padding: 2rem;
+  border-radius: 20px;
+  width: 90%;
+  overflow-x: auto;
+}
+
+.benefits-table-desktop {
+  display: block;
+}
+
+.benefits-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+  text-align: center;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid #270035;
+  border-collapse: collapse;
+}
+
+.benefits-table-header {
+  background-color: #270035;
+  padding: 2rem 0rem;
+}
+
+.benefits-glow-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  filter: drop-shadow(0px 0px 15px #c61bff);
+  letter-spacing: 1px;
+  text-align: center;
+  display: inline-block;
+}
+
+.benefits-table-columns th {
+  font-size: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+  border: none;
+  background-color: #270035;
+  filter: none;
+}
+
+.benefits-table td {
+  padding: 1rem;
+  vertical-align: top;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  background-color: #270035;
+}
+
+.benefits-table img {
+  width: 30px;
+  height: auto;
+}
+
+.benefits-table-columns th:nth-child(1),
+.benefits-table-columns th:nth-child(2) {
+  text-align: left;
+}
+
+.benefits-table-columns th:nth-child(n + 3) {
+  text-align: center;
+}
+
+.benefits-table td:nth-child(1),
+.benefits-table td:nth-child(2) {
+  text-align: left;
+}
+
+.benefits-table td:nth-child(n + 3) {
+  text-align: center;
+}
+
+.benefits-table-columns th .vip-title-table {
+  font-size: 1.5rem;
+  font-weight: 800;
+  display: inline-block;
+  background: linear-gradient(to bottom, #d8beff 0%, #ebdeff 41%, #4c56a5 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0px 0px 53.48px rgba(255, 255, 255, 0.53));
+}
+
+/* Gold */
+.benefits-table-columns th .vip-title-table.gold {
+  background: linear-gradient(to bottom, #bd9b13 0%, #ffe956 50%, #c29010 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0px 0px 42.6px rgba(255, 239, 98, 0.53));
+}
+
+/* Silver */
+.benefits-table-columns th .vip-title-table.silver {
+  background: linear-gradient(to bottom, #8eb7ff 0%, #ffffff 47%, #bac2ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0px 0px 42.6px rgba(157, 221, 255, 0.5));
+}
+
+/* Bronze */
+.benefits-table-columns th .vip-title-table.bronze {
+  background: linear-gradient(to bottom, #ffbc61 0%, #b5670d 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0px 0px 42.6px rgba(255, 187, 98, 0.5));
+}
+
+/* End of Benefits table Section */
