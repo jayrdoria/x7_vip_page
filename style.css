@@ -1164,6 +1164,7 @@ body {
 
 .benefits-table {
   width: 100%;
+  table-layout: auto;
   border-collapse: collapse;
   color: white;
   text-align: center;
@@ -1199,7 +1200,6 @@ body {
 
 .benefits-table td {
   padding: 1rem;
-  vertical-align: top;
   font-size: 1rem;
   text-align: center;
   border: none;
@@ -1229,7 +1229,16 @@ body {
   text-align: center;
 }
 
-.benefits-table-columns th .vip-title-table {
+.benefits-table th:nth-child(1) {
+  width: 18%;
+}
+
+.benefits-table th:nth-child(2) {
+  width: 42%;
+}
+
+.benefits-table-columns th .vip-title-table,
+.benefits-table-tier-mobile-row th .vip-title-table {
   font-size: 1.5rem;
   font-weight: 800;
   display: inline-block;
@@ -1241,7 +1250,8 @@ body {
 }
 
 /* Gold */
-.benefits-table-columns th .vip-title-table.gold {
+.benefits-table-columns th .vip-title-table.gold,
+.benefits-table-tier-mobile-row th .vip-title-table.gold {
   background: linear-gradient(to bottom, #bd9b13 0%, #ffe956 50%, #c29010 100%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -1251,7 +1261,8 @@ body {
 }
 
 /* Silver */
-.benefits-table-columns th .vip-title-table.silver {
+.benefits-table-columns th .vip-title-table.silver,
+.benefits-table-tier-mobile-row th .vip-title-table.silver {
   background: linear-gradient(to bottom, #8eb7ff 0%, #ffffff 47%, #bac2ff 100%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -1261,7 +1272,8 @@ body {
 }
 
 /* Bronze */
-.benefits-table-columns th .vip-title-table.bronze {
+.benefits-table-columns th .vip-title-table.bronze,
+.benefits-table-tier-mobile-row th .vip-title-table.bronze {
   background: linear-gradient(to bottom, #ffbc61 0%, #b5670d 100%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -1270,4 +1282,431 @@ body {
   filter: drop-shadow(0px 0px 42.6px rgba(255, 187, 98, 0.5));
 }
 
+.benefits-table-tier-mobile-row,
+.benefits-table-dot-row {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .benefits-table-wrapper {
+    width: 100%;
+  }
+  .benefits-table-columns th {
+    padding: 0.5rem;
+    font-size: 1.2rem;
+  }
+  .benefits-table-columns th .vip-title-table {
+    font-size: 1.2rem;
+  }
+  .benefits-table td {
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .benefits-table-wrapper {
+    padding: 2rem 1rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .silver-check,
+  .gold-check,
+  .platinum-check {
+    display: none;
+  }
+  .benefits-table-tier-mobile-row th .vip-title-table,
+  .benefits-table-tier-mobile-row th .vip-title-table.gold,
+  .benefits-table-tier-mobile-row th .vip-title-table.silver,
+  .benefits-table-tier-mobile-row th .vip-title-table.bronze {
+    font-size: 2rem;
+  }
+  .benefits-table-columns {
+    display: none;
+  }
+  .benefits-table-header {
+    padding: 1rem 0rem;
+  }
+  .benefits-glow-title {
+    font-size: 2rem;
+  }
+  .benefits-table td:nth-child(1),
+  .benefits-table td:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+  }
+  .benefits-table td:nth-child(1) {
+    font-weight: bold;
+    padding-bottom: 0;
+  }
+  .benefits-table-wrapper {
+    padding: 2rem 3rem;
+  }
+  .benefits-table-tier-mobile-row,
+  .benefits-table-dot-row {
+    display: table-row;
+  }
+  .benefits-mobile-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .benefits-mobile-dots .dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #b2b5bf;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .benefits-mobile-dots .dot.active {
+    background-color: #d400ff;
+  }
+}
+
+@media (max-width: 576px) {
+  .benefits-glow-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .benefits-table-wrapper {
+    padding: 2rem 1.5rem;
+  }
+  .benefits-table-wrapper {
+    padding: 1rem 1.5rem 1rem 1.5rem;
+  }
+  .table-section {
+    padding: 4rem 1rem;
+  }
+}
+
 /* End of Benefits table Section */
+
+/* Start of Testimonials Section */
+.testimonials-section {
+  background: linear-gradient(to left, #090217 0%, #64029c 50%, #02020c 100%);
+}
+
+.testimonials-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  filter: drop-shadow(0px 0px 15px #c61bff);
+  letter-spacing: 1px;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.testimonials-boxes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.testimonial-box {
+  width: 360px;
+  min-height: 300px;
+  background-size: cover;
+  background-position: center;
+  padding: 2rem 1.5rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center */
+  align-items: center; /* Horizontally center */
+  text-align: center; /* Center text inside */
+  color: white;
+  font-size: 1rem;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.testimonial-box p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-top: 3rem;
+  /*padding: 0 1rem;*/
+}
+
+.testimonial-box span {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.testimonial-box.left p {
+  padding-left: 2.5rem;
+}
+
+.testimonial-box.left span,
+.testimonial-box.middle span {
+  padding-left: 1rem;
+}
+
+.testimonial-box.right p {
+  padding-right: 2rem;
+}
+
+.testimonial-box.right span {
+  padding-left: 1rem;
+}
+
+/* Backgrounds per position */
+.testimonial-box.left {
+  background-image: url("https://i.imgur.com/Elljyss.png");
+}
+
+.testimonial-box.middle {
+  background-image: url("https://i.imgur.com/UDfpDDv.png");
+}
+
+.testimonial-box.right {
+  background-image: url("https://i.imgur.com/TpzcwTs.png");
+}
+
+.testimonial-stars {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  gap: 4px;
+}
+
+.testimonial-box.left .testimonial-stars {
+  padding-left: 2rem;
+}
+
+.testimonial-stars img {
+  width: 25px;
+  height: auto;
+}
+
+.testimonial-footer {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.testimonial-box.left .testimonial-footer {
+  padding-left: 1.5rem;
+}
+
+.testimonial-box.right .testimonial-footer {
+  padding-right: 2rem;
+}
+
+.testimonial-footer img.testimonial-flag {
+  width: 50px;
+  height: auto;
+}
+
+.testimonial-block {
+  display: block;
+  margin-bottom: 3rem;
+}
+
+.testimonials-boxes:nth-of-type(2) .testimonial-box {
+  width: 390px;
+}
+
+/* End of Testimonials Section */
+
+/* Start of Before Footer Section */
+.before-footer-container {
+  background-image: url("https://i.imgur.com/SjY3FUE.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.before-footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16rem;
+}
+
+.before-footer-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  filter: drop-shadow(0px 0px 15px #c61bff);
+  letter-spacing: 1px;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.before-footer-description {
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.before-footer-button {
+  background: linear-gradient(90deg, #8f00ff 0%, #f73068 100%);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  text-transform: uppercase;
+  width: 400px;
+  height: 80px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.before-footer-button:hover {
+  transform: scaleX(1.1);
+  box-shadow: 0 0 15px #f73068;
+}
+
+@media (max-width: 1440px) {
+  .before-footer-content {
+    padding: 0 7rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .before-footer-content {
+    padding: 0 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .before-footer-content {
+    padding: 0 1rem;
+  }
+  .before-footer-title {
+    font-size: 2rem;
+  }
+  .before-footer-button {
+    width: 300px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 576px) {
+  .before-footer-title {
+    font-size: 1.5rem;
+  }
+  .before-footer-description {
+    font-size: 1rem;
+  }
+  .before-footer-button {
+    width: 200px;
+    font-size: 1rem;
+    height: 50px;
+  }
+}
+
+@media (max-width: 430px) {
+  .before-footer-content {
+    padding: 0;
+  }
+}
+
+/* End of Before Footer Section */
+
+/* Start of Footer Section */
+.footer-container {
+  background-color: #190033;
+  padding: 2rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-content {
+  text-align: center;
+  width: 100%;
+}
+
+.footer-logo {
+  width: 250px;
+  margin-bottom: 2rem;
+}
+
+.footer-logos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.footer-logo-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footer-logo-row img {
+  height: 50px;
+  object-fit: contain;
+  margin: 0 12px; /* Adds horizontal space between logos */
+  padding: 5px; /* Optional: adds breathing room inside the logo box */
+}
+
+.footer-divider {
+  border: none;
+  height: 2px;
+  background-color: #bb00ff;
+  width: 100%;
+  max-width: 1300px;
+  margin: 2rem auto;
+}
+
+.footer-copy {
+  color: white;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.footer-logo-row.row-3 img {
+  height: 70px; /* or whatever size you want */
+}
+
+@media (max-width: 576px) {
+  .footer-logo-row {
+    justify-content: space-between;
+  }
+
+  .footer-logo-row img {
+    flex: 0 0 calc(50% - 0.5rem); /* More space for logos */
+    max-width: calc(50% - 0.5rem);
+    display: block;
+    height: 70px; /* Increase this value if you want taller logos */
+    object-fit: contain;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-logo-row img:nth-last-child(1):nth-child(odd) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* End of Footer Section */
