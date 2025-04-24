@@ -1391,6 +1391,7 @@ body {
 /* Start of Testimonials Section */
 .testimonials-section {
   background: linear-gradient(to left, #090217 0%, #64029c 50%, #02020c 100%);
+  padding-bottom: 3rem;
 }
 
 .testimonials-title {
@@ -1460,15 +1461,15 @@ body {
 
 /* Backgrounds per position */
 .testimonial-box.left {
-  background-image: url("https://i.imgur.com/Elljyss.png");
+  background-image: url("https://i.imgur.com/DrT1gQ6.png");
 }
 
 .testimonial-box.middle {
-  background-image: url("https://i.imgur.com/UDfpDDv.png");
+  background-image: url("https://i.imgur.com/M8gO4K5.png");
 }
 
 .testimonial-box.right {
-  background-image: url("https://i.imgur.com/TpzcwTs.png");
+  background-image: url("https://i.imgur.com/rRdFF5O.png");
 }
 
 .testimonial-stars {
@@ -1518,6 +1519,142 @@ body {
 
 .testimonials-boxes:nth-of-type(2) .testimonial-box {
   width: 390px;
+  padding: 2rem 1.7rem;
+}
+
+.testimonials-boxes-mobile,
+.testimonial-nav-mobile {
+  display: none;
+}
+
+@media (max-width: 1550px) {
+  .testimonial-box {
+    width: 330px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .testimonials-boxes:nth-of-type(2) .testimonial-box {
+    width: 370px;
+    padding: 1.5rem 2rem;
+  }
+  .testimonials-boxes {
+    gap: 0.5rem;
+  }
+  .testimonial-stars {
+    top: 2rem;
+  }
+  .testimonial-footer {
+    bottom: 2rem;
+  }
+}
+
+@media (max-width: 1366px) {
+  .testimonial-box {
+    width: 280px;
+    margin-bottom: 0;
+  }
+  .testimonial-box p {
+    font-size: 0.9rem;
+  }
+  .testimonial-stars {
+    top: 2.5rem;
+  }
+  .testimonial-stars img {
+    width: 20px;
+  }
+  .testimonial-footer img.testimonial-flag {
+    width: 40px;
+  }
+  .testimonial-footer {
+    bottom: 2.5rem;
+  }
+  .testimonials-boxes:nth-of-type(2) .testimonial-box {
+    width: 310px;
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 1175px) {
+  .testimonials-boxes {
+    padding: 0 10rem;
+  }
+}
+
+@media (max-width: 888px) {
+  .testimonials-boxes {
+    padding: 0 4rem;
+  }
+}
+
+/* Mobile-only slider setup */
+.testimonials-boxes-mobile {
+  display: none;
+  overflow: hidden;
+}
+
+.testimonials-slider-track-mobile {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.testimonials-slider-slide-mobile {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Navigation Arrows */
+.testimonial-nav-mobile {
+  display: none;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.testimonial-nav-mobile img {
+  width: 30px;
+  cursor: pointer;
+}
+
+/* Show mobile only below 756px */
+@media (max-width: 756px) {
+  .testimonial-box {
+    width: 300px;
+  }
+  .testimonials-section {
+    padding-bottom: 0;
+  }
+  .testimonials-title {
+    font-size: 2rem;
+    padding: 1rem 0;
+  }
+  .testimonials-boxes-desktop {
+    display: none;
+  }
+
+  .testimonials-boxes-mobile {
+    display: block;
+  }
+
+  .testimonial-nav-mobile {
+    display: flex;
+  }
+
+  /* Stack testimonial-boxes vertically */
+  .testimonials-boxes {
+    flex-direction: column;
+    margin-top: -1rem;
+  }
+
+  .testimonial-box {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 430px) {
+  .testimonials-title {
+    font-size: 1.5rem;
+  }
 }
 
 /* End of Testimonials Section */
