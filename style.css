@@ -67,7 +67,7 @@ body {
   filter: drop-shadow(0px 0px 65.78px #e420fe);
   text-shadow: 0 0 20px rgba(228, 32, 254, 0.5);
   display: block;
-  -webkit-text-stroke: 1.5px black; /* Solid black outline */
+  /*-webkit-text-stroke: 1.5px black;  Solid black outline */
   font-weight: 900;
 }
 
@@ -178,7 +178,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 1rem 1rem;
+    padding: 1rem 1rem 0 1rem;
     height: auto;
   }
 
@@ -192,7 +192,7 @@ body {
     flex-direction: column;
     align-items: center;
     order: 1;
-    padding: 1rem 2rem;
+    padding: 1rem 2rem 0 2rem;
   }
 
   .hero-right {
@@ -244,6 +244,12 @@ body {
   }
 }
 
+@media (max-width: 480px) {
+  .hero-right img {
+    margin-top: -730px;
+  }
+}
+
 @media (max-width: 430px) {
   .hero-left h1:nth-child(3),
   .hero-left h1:nth-child(2) {
@@ -257,6 +263,7 @@ body {
   }
   .hero-left p {
     max-width: 100%;
+    padding-top: 70%;
   }
 }
 
@@ -411,9 +418,6 @@ body {
   .glow-text {
     font-size: 1rem;
   }
-}
-
-@media (max-width: 430px) {
   .stats-container {
     display: flex;
     flex-direction: row;
@@ -440,6 +444,20 @@ body {
   overflow: hidden;
   background: url("https://i.imgur.com/5nKNZA3.png");
   background-size: cover;
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 1) 60%,
+    rgba(0, 0, 0, 0.6) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-composite: destination-in;
+  mask-image: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 1) 60%,
+    rgba(0, 0, 0, 0.6) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-composite: exclude;
 }
 
 .experience-content {
@@ -494,10 +512,16 @@ body {
     font-size: 2rem;
   }
   .experience-text p {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .experience-content {
-    padding: 4rem 0rem 4rem 1rem;
+    padding: 4rem 0rem 0rem 1rem;
+  }
+  .experience-section {
+    padding: 2rem 0;
+  }
+  .experience-container {
+    background: url("https://i.imgur.com/lZU9T3c.png");
   }
 }
 
@@ -526,7 +550,7 @@ body {
   font-size: 3rem;
   font-weight: 800;
   color: #ffffff;
-  filter: drop-shadow(0px 0px 34.4px #c61bff);
+  filter: drop-shadow(0px 0px 15px #c61bff);
   letter-spacing: 1px;
 }
 
@@ -745,7 +769,7 @@ body {
 }
 
 .vip-tier-switcher-mobile img {
-  width: 50px;
+  width: 40px;
   height: auto;
   cursor: pointer;
 }
@@ -879,17 +903,23 @@ body {
   .vip-section-title {
     font-size: 2rem;
   }
+  .vip-tiers-section {
+    padding: 2rem 2rem;
+  }
+  .vip-icon {
+    width: 60px;
+  }
+  .vip-title {
+    font-size: 2rem;
+  }
+  .tier-text p {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 540px) {
-  .vip-title {
-    font-size: 3rem;
-  }
-  .tier-text p {
-    font-size: 1.8rem;
-  }
   .vip-tier-switcher-mobile img {
-    width: 45px;
+    width: 40px;
   }
 }
 
@@ -900,12 +930,6 @@ body {
   .vip-icon {
     width: 50px;
   }
-  .vip-title {
-    font-size: 2.5rem;
-  }
-  .tier-text p {
-    font-size: 1.5rem;
-  }
   .vip-tier-switcher-mobile img {
     width: 30px;
   }
@@ -913,7 +937,7 @@ body {
 
 @media (max-width: 390px) {
   .vip-tiers-section {
-    padding: 4rem 1rem;
+    padding: 2rem 1rem;
   }
   .vip-icon {
     width: 35px;
@@ -937,13 +961,6 @@ body {
   padding: 4rem 7rem;
   background-color: #02020c;
   width: 100%;
-}
-
-.vip-benefits-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: white;
-  margin-bottom: 3rem;
 }
 
 .vip-benefits-carousel {
@@ -1052,7 +1069,7 @@ body {
 }
 
 .vip-benefit-switcher-mobile img {
-  width: 50px;
+  width: 40px;
   height: auto;
   cursor: pointer;
 }
@@ -1067,7 +1084,7 @@ body {
 @media (max-width: 890px) {
   .vip-benefits-section {
     text-align: center;
-    padding: 4rem 4rem;
+    padding: 4rem 3rem;
   }
   .vip-benefits-content {
     padding: 4rem 2rem;
@@ -1085,6 +1102,12 @@ body {
   .vip-benefit-switcher-mobile {
     display: flex;
   }
+  .vip-benefits-section {
+    padding: 3rem 2rem;
+  }
+  .vip-benefits-title {
+    font-size: 2.5rem;
+  }
 }
 @media (max-width: 576px) {
   .vip-benefits-content {
@@ -1097,7 +1120,7 @@ body {
     font-size: 2rem;
   }
   .vip-benefit-slide p {
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-bottom: 1rem;
   }
   .vip-benefit-button {
@@ -1105,27 +1128,24 @@ body {
     height: 70px;
     font-size: 1rem;
   }
+  .vip-benefits-section {
+    padding: 2rem 2rem;
+  }
+  .vip-benefits-title {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 430px) {
   .vip-benefit-switcher-mobile img {
     width: 30px;
   }
-  .vip-benefits-title {
-    font-size: 2rem;
-  }
   .vip-benefit-slide h3 {
     font-size: 1.5rem;
-  }
-  .vip-benefit-slide p {
-    font-size: 1.2rem;
   }
 
   .vip-benefit-button {
     height: 50px;
-  }
-  .vip-benefits-section {
-    padding: 4rem 1rem;
   }
 }
 
@@ -1133,11 +1153,8 @@ body {
   .vip-benefits-content {
     padding: 2rem 0.5rem 3rem 0.5rem;
   }
-  .vip-benefits-title {
-    font-size: 1.8rem;
-  }
   .vip-benefits-section {
-    padding: 4rem 1rem;
+    padding: 2rem 1rem;
   }
 }
 /* End of Vip Benefits Section */
@@ -1372,6 +1389,9 @@ body {
   .benefits-glow-title {
     font-size: 1.5rem;
   }
+  .table-section {
+    padding: 2rem 2rem;
+  }
 }
 
 @media (max-width: 430px) {
@@ -1382,7 +1402,7 @@ body {
     padding: 1rem 1.5rem 1rem 1.5rem;
   }
   .table-section {
-    padding: 4rem 1rem;
+    padding: 2rem 1rem;
   }
 }
 
@@ -1834,7 +1854,7 @@ body {
     flex: 0 0 calc(50% - 0.5rem); /* More space for logos */
     max-width: calc(50% - 0.5rem);
     display: block;
-    height: 70px; /* Increase this value if you want taller logos */
+    height: 40px; /* Increase this value if you want taller logos */
     object-fit: contain;
     margin-left: auto;
     margin-right: auto;

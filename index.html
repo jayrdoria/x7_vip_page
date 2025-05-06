@@ -1008,32 +1008,62 @@
   updateSlide(currentSlide);
   // VIP Benefits Desktop and Mobile END
 
- // VIP Table Mobile
- const tierNames = ["BRONZE", "SILVER", "GOLD", "PLATINUM"];
+  const tierNames = ["BRONZE", "SILVER", "GOLD", "PLATINUM"];
 const tierClasses = ["bronze", "silver", "gold", "platinum"];
 const label = document.getElementById("active-tier-label");
 const dots = document.querySelectorAll(".benefits-mobile-dots .dot");
 
-dots.forEach((dot, index) => {
-  dot.addEventListener("click", () => {
-    // Remove active from all dots
-    dots.forEach(d => d.classList.remove("active"));
-    // Set active on the clicked dot
-    dot.classList.add("active");
+let currentTierIndex = 0;
+let autoSwitchInterval;
 
-    // Update the tier label text and class
-    label.textContent = tierNames[index];
-    label.className = `vip-title-table ${tierClasses[index]}`;
+function switchToTier(index) {
+  dots.forEach(dot => dot.classList.remove("active"));
+  dots[index].classList.add("active");
 
-    // Show only the relevant check column
-    tierClasses.forEach((tier, tierIndex) => {
-      const checks = document.querySelectorAll(`.${tier}-check`);
-      checks.forEach(cell => {
+  label.textContent = tierNames[index];
+  label.className = `vip-title-table ${tierClasses[index]}`;
+
+  tierClasses.forEach((tier, tierIndex) => {
+    const checks = document.querySelectorAll(`.${tier}-check`);
+    checks.forEach(cell => {
+      if (window.innerWidth <= 850) {
         cell.style.display = tierIndex === index ? "table-cell" : "none";
-      });
+      } else {
+        cell.style.display = "table-cell"; // Always show on desktop
+      }
     });
   });
+}
+
+// Manual click
+dots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    currentTierIndex = index;
+    switchToTier(index);
+  });
 });
+
+// Auto-rotate function
+function startAutoRotation() {
+  if (autoSwitchInterval) clearInterval(autoSwitchInterval);
+  if (window.innerWidth <= 850) {
+    autoSwitchInterval = setInterval(() => {
+      currentTierIndex = (currentTierIndex + 1) % tierClasses.length;
+      switchToTier(currentTierIndex);
+    }, 3000);
+  }
+}
+
+// Listen for resize to reset visibility and auto-switch logic
+window.addEventListener("resize", () => {
+  switchToTier(currentTierIndex);
+  startAutoRotation();
+});
+
+// Initial call
+switchToTier(currentTierIndex);
+startAutoRotation();
+
 
  // VIP Table Mobile END
 
