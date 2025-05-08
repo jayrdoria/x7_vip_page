@@ -1013,27 +1013,63 @@ const tierClasses = ["bronze", "silver", "gold", "platinum"];
 const label = document.getElementById("active-tier-label");
 const dots = document.querySelectorAll(".benefits-mobile-dots .dot");
 
-let currentTierIndex = 0;
+let currentTierIndex = 3;
 let autoSwitchInterval;
 
 function switchToTier(index) {
+ // Fade out the label
+label.style.opacity = "0";
+setTimeout(() => {
+  label.textContent = tierNames[index];
+  label.className = `vip-title-table ${tierClasses[index]}`;
+  label.style.opacity = "1";
+}, 300); // match this with check fade-out time
+
+
+  // Update active dot
   dots.forEach(dot => dot.classList.remove("active"));
   dots[index].classList.add("active");
 
-  label.textContent = tierNames[index];
-  label.className = `vip-title-table ${tierClasses[index]}`;
-
-  tierClasses.forEach((tier, tierIndex) => {
-    const checks = document.querySelectorAll(`.${tier}-check`);
-    checks.forEach(cell => {
-      if (window.innerWidth <= 850) {
-        cell.style.display = tierIndex === index ? "table-cell" : "none";
-      } else {
-        cell.style.display = "table-cell"; // Always show on desktop
-      }
+  // MOBILE ONLY
+  if (window.innerWidth <= 850) {
+    // Step 1: Fade out all checks
+    tierClasses.forEach(tier => {
+      const checks = document.querySelectorAll(`.${tier}-check`);
+      checks.forEach(cell => {
+        cell.style.transition = "opacity 0.3s ease-in-out";
+        cell.style.opacity = "0";
+      });
     });
-  });
+
+    // Step 2: After fade out, hide all then fade in selected tier
+    setTimeout(() => {
+      tierClasses.forEach((tier, tierIndex) => {
+        const checks = document.querySelectorAll(`.${tier}-check`);
+        checks.forEach(cell => {
+          if (tierIndex === index) {
+            cell.style.display = "table-cell";
+            requestAnimationFrame(() => {
+              cell.style.opacity = "1";
+            });
+          } else {
+            cell.style.display = "none";
+          }
+        });
+      });
+    }, 300); // match fade-out time
+  } else {
+    // DESKTOP: show everything immediately
+    tierClasses.forEach(tier => {
+      const checks = document.querySelectorAll(`.${tier}-check`);
+      checks.forEach(cell => {
+        cell.style.display = "table-cell";
+        cell.style.opacity = "1";
+        cell.style.transition = "none";
+      });
+    });
+  }
 }
+
 
 // Manual click
 dots.forEach((dot, index) => {
@@ -1068,28 +1104,74 @@ startAutoRotation();
  // VIP Table Mobile END
 
  // Testimonials Mobile
- const testimonialsSliderTrackMobile = document.querySelector('.testimonials-slider-track-mobile');
+const testimonialsSliderTrackMobile = document.querySelector('.testimonials-slider-track-mobile');
 const testimonialPrevBtnMobile = document.querySelector('.testimonial-prev-btn-mobile');
 const testimonialNextBtnMobile = document.querySelector('.testimonial-next-btn-mobile');
 
-let currentTestimonialIndex = 0;
-const totalTestimonialSlides = document.querySelectorAll('.testimonials-slider-slide-mobile').length;
+let currentTestimonialIndex = 1;
+let isTransitioningMobile = false;
 
-testimonialPrevBtnMobile.addEventListener('click', () => {
-  currentTestimonialIndex = (currentTestimonialIndex - 1 + totalTestimonialSlides) % totalTestimonialSlides;
-  updateTestimonialSliderMobile();
-});
+const originalSlides = Array.from(document.querySelectorAll('.testimonials-slider-slide-mobile'));
 
-testimonialNextBtnMobile.addEventListener('click', () => {
-  currentTestimonialIndex = (currentTestimonialIndex + 1) % totalTestimonialSlides;
-  updateTestimonialSliderMobile();
-});
+// Clone first and last slides
+const firstClone = originalSlides[0].cloneNode(true);
+const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
+firstClone.classList.add('clone');
+lastClone.classList.add('clone');
 
-function updateTestimonialSliderMobile() {
-  testimonialsSliderTrackMobile.style.transform = `translateX(-${currentTestimonialIndex * 100}%)`;
+// Append clones only after DOM is ready
+testimonialsSliderTrackMobile.appendChild(firstClone);
+testimonialsSliderTrackMobile.insertBefore(lastClone, originalSlides[0]);
+
+const allSlides = document.querySelectorAll('.testimonials-slider-slide-mobile');
+
+// Position to Slide 1 after everything is set up
+function updateMobileSliderPosition() {
+  const slideWidth = originalSlides[0].offsetWidth;
+  testimonialsSliderTrackMobile.style.transition = 'none';
+  testimonialsSliderTrackMobile.style.transform = `translateX(-${slideWidth * currentTestimonialIndex}px)`;
 }
 
+// Initial position on load
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    updateMobileSliderPosition();
+  }, 10); // small delay to ensure rendering
+});
 
+window.addEventListener('resize', updateMobileSliderPosition);
+
+// Navigation handlers
+testimonialNextBtnMobile.addEventListener('click', () => {
+  if (isTransitioningMobile) return;
+  currentTestimonialIndex++;
+  moveSlider();
+});
+
+testimonialPrevBtnMobile.addEventListener('click', () => {
+  if (isTransitioningMobile) return;
+  currentTestimonialIndex--;
+  moveSlider();
+});
+
+function moveSlider() {
+  const slideWidth = originalSlides[0].offsetWidth;
+  testimonialsSliderTrackMobile.style.transition = 'transform 0.5s ease-in-out';
+  testimonialsSliderTrackMobile.style.transform = `translateX(-${slideWidth * currentTestimonialIndex}px)`;
+  isTransitioningMobile = true;
+}
+
+testimonialsSliderTrackMobile.addEventListener('transitionend', () => {
+  const slideWidth = originalSlides[0].offsetWidth;
+  isTransitioningMobile = false;
+
+  if (allSlides[currentTestimonialIndex].classList.contains('clone')) {
+    testimonialsSliderTrackMobile.style.transition = 'none';
+    currentTestimonialIndex =
+      currentTestimonialIndex === allSlides.length - 1 ? 1 : allSlides.length - 2;
+    testimonialsSliderTrackMobile.style.transform = `translateX(-${slideWidth * currentTestimonialIndex}px)`;
+  }
+});
 
 
     </script>
